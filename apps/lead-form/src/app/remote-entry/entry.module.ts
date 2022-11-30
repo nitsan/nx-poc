@@ -2,20 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { RemoteEntryComponent } from './entry.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { LeadFormComponent } from "../lead-form/lead-form.component";
+import { HttpClientModule } from "@angular/common/http";
+import { LeadFormService } from "../lead-form/lead-form.service";
 
 @NgModule({
-  declarations: [RemoteEntryComponent, NxWelcomeComponent],
+  declarations: [LeadFormComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',
-        component: RemoteEntryComponent,
+        component: LeadFormComponent,
       },
     ]),
   ],
-  providers: [],
+  providers: [LeadFormService],
 })
 export class RemoteEntryModule {}
