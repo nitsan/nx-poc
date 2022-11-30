@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "api-interfaces": "libs/api-interfaces",
     "funnel": "apps/funnel",
     "funnel-e2e": "apps/funnel-e2e",
     "hub": "apps/hub",
