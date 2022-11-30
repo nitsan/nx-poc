@@ -1,0 +1,99 @@
+{
+  "name": "funnel",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/funnel/src",
+  "prefix": "nx-poc",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/funnel",
+        "index": "apps/funnel/src/index.html",
+        "main": "apps/funnel/src/main.ts",
+        "polyfills": "apps/funnel/src/polyfills.ts",
+        "tsConfig": "apps/funnel/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/funnel/src/favicon.ico", "apps/funnel/src/assets"],
+        "styles": ["apps/funnel/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/funnel/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/funnel/src/environments/environment.ts",
+              "with": "apps/funnel/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/funnel/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:module-federation-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "funnel:build:production"
+        },
+        "development": {
+          "browserTarget": "funnel:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "funnel:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/funnel/**/*.ts", "apps/funnel/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/funnel"],
+      "options": {
+        "jestConfig": "apps/funnel/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

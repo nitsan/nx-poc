@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "projects": {
+    "funnel": "apps/funnel",
+    "funnel-e2e": "apps/funnel-e2e",
+    "lead-form": "apps/lead-form",
+    "lead-form-e2e": "apps/lead-form-e2e"
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+}
