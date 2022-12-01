@@ -1,6 +1,5 @@
 import * as React from 'react';
-import NxWelcome from './nx-welcome';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 
 const LeadForm = React.lazy(() => import('lead-form/Module'));
 const Hub = React.lazy(() => import('hub/Module'));
@@ -10,10 +9,6 @@ export function App() {
   return (
     <React.Suspense fallback={null}>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-
         <li>
           <Link to="/lead-form">Lead form</Link>
         </li>
@@ -25,8 +20,7 @@ export function App() {
         </li>
       </ul>
       <Routes>
-        <Route path="/" element={<NxWelcome title="shell" />} />
-
+        <Route path="/" element={ <Navigate to="/lead-form" /> }/>
         <Route path="/lead-form" element={<LeadForm />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/payment" element={<Payment />} />
