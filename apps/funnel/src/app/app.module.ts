@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
@@ -18,7 +17,8 @@ import { RouterModule } from '@angular/router';
         },
         {
           path: '',
-          component: NxWelcomeComponent,
+          redirectTo: 'lead-form',
+          pathMatch: 'full',
         },
       ],
       { initialNavigation: 'enabledBlocking' }

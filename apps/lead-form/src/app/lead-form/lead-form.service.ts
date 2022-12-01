@@ -16,7 +16,11 @@ export class LeadFormService {
       .pipe(
         map((res: NextPath) => {
           console.log(res);
-          this.router.navigate([`/${res.nextPath}`]);
+          if (res.redirect) {
+            location.replace(res.url);
+          } else {
+            this.router.navigate([`/${res.url}`]);
+          }
         })
       )
       .subscribe();

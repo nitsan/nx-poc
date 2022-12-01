@@ -1,3 +1,4 @@
 export interface NextPath {
-  nextPath: string;
+  url: string;
+  redirect: boolean;
 }

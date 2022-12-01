@@ -8,15 +8,16 @@ export class AppService {
   }
 
   getNextPath(currentPath: string): NextPath {
-    let nextPath: string;
+    const nextPath = { url: '', redirect: false};
     switch (currentPath) {
       case '/lead-form':
-        nextPath = 'hub';
+        nextPath.url = 'http://localhost:4300/hub';
+        nextPath.redirect = true;
         break;
       default:
-        nextPath = '';
+        throw new Error(`cannot find next path for ${currentPath}`);
     }
 
-    return { nextPath };
+    return nextPath;
   }
 }
