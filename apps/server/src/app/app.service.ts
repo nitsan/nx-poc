@@ -11,7 +11,14 @@ export class AppService {
     const nextPath = { url: '', redirect: false};
     switch (currentPath) {
       case '/lead-form':
-        nextPath.url = 'http://localhost:4300/hub';
+        nextPath.url = '/hub';
+        break;
+      case '/hub':
+        nextPath.url = 'http://localhost:4300/questionnaire';
+        nextPath.redirect = true;
+        break;
+      case '/questionnaire':
+        nextPath.url = 'http://localhost:4200/payment';
         nextPath.redirect = true;
         break;
       default:

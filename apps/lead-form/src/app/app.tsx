@@ -1,11 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+import LeadForm from "./lead-form/lead-form";
 
 export function App() {
   return (
     <>
-      <NxWelcome title="lead-form" />
+      <LeadForm />
       <div />
     </>
   );
