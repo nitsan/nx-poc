@@ -1,4 +1,4 @@
 module.exports = {
   name: 'funnel',
-  remotes: ['lead-form'],
+  remotes: ['questionnaire'],
 };

@@ -1,1 +1,1 @@
-declare module 'lead-form/Module';
+declare module 'questionnaire/Module';

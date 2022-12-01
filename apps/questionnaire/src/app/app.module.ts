@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -11,14 +10,11 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot(
       [
         {
-          path: 'questionnaire',
-          loadChildren: () =>
-            import('questionnaire/Module').then((m) => m.RemoteEntryModule),
-        },
-        {
           path: '',
-          redirectTo: 'questionnaire',
-          pathMatch: 'full',
+          loadChildren: () =>
+            import('./remote-entry/entry.module').then(
+              (m) => m.RemoteEntryModule
+            ),
         },
       ],
       { initialNavigation: 'enabledBlocking' }

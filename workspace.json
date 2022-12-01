@@ -8,6 +8,8 @@
     "hub-e2e": "apps/hub-e2e",
     "lead-form": "apps/lead-form",
     "lead-form-e2e": "apps/lead-form-e2e",
+    "questionnaire": "apps/questionnaire",
+    "questionnaire-e2e": "apps/questionnaire-e2e",
     "server": "apps/server",
     "shell": "apps/shell",
     "shell-e2e": "apps/shell-e2e"

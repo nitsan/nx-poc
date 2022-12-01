@@ -1,0 +1,121 @@
+{
+  "name": "questionnaire",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/questionnaire/src",
+  "prefix": "nx-poc",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/questionnaire",
+        "index": "apps/questionnaire/src/index.html",
+        "main": "apps/questionnaire/src/main.ts",
+        "polyfills": "apps/questionnaire/src/polyfills.ts",
+        "tsConfig": "apps/questionnaire/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/questionnaire/src/favicon.ico",
+          "apps/questionnaire/src/assets"
+        ],
+        "styles": ["apps/questionnaire/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/questionnaire/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/questionnaire/src/environments/environment.ts",
+              "with": "apps/questionnaire/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/questionnaire/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "questionnaire:build:production"
+        },
+        "development": {
+          "browserTarget": "questionnaire:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4301,
+        "publicHost": "http://localhost:4301"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "questionnaire:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/questionnaire/**/*.ts",
+          "apps/questionnaire/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/questionnaire"],
+      "options": {
+        "jestConfig": "apps/questionnaire/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "questionnaire:build",
+        "port": 4301
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "questionnaire:build:development"
+        },
+        "production": {
+          "buildTarget": "questionnaire:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
