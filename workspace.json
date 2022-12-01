@@ -14,7 +14,8 @@
     "questionnaire-e2e": "apps/questionnaire-e2e",
     "server": "apps/server",
     "shell": "apps/shell",
-    "shell-e2e": "apps/shell-e2e"
+    "shell-e2e": "apps/shell-e2e",
+    "utils": "libs/utils"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

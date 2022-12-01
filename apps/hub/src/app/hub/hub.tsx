@@ -1,11 +1,19 @@
 import styles from './hub.module.scss';
+import { getNextPath } from "@nx-poc/utils";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable-next-line */
 export interface HubProps {}
 
 export function Hub(props: HubProps) {
-  function next() {
-    console.log('next');
+  const navigate = useNavigate();
+  async function next() {
+    const { url, redirect } = await getNextPath();
+    if (redirect) {
+      document.location.href = url;
+    } else {
+      navigate(url);
+    }
   }
 
   return (

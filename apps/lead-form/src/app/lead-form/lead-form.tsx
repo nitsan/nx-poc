@@ -1,6 +1,6 @@
 import styles from './lead-form.module.scss';
-import { NextPath } from "@funnel/api-interfaces";
 import { useNavigate } from 'react-router-dom';
+import { getNextPath } from "@nx-poc/utils";
 
 /* eslint-disable-next-line */
 export interface LeadFormProps {}
@@ -8,12 +8,7 @@ export interface LeadFormProps {}
 export function LeadForm(props: LeadFormProps) {
   const navigate = useNavigate();
   async function getQuote() {
-    const res  = await fetch('/api/next', {
-      method: 'POST',
-      body: JSON.stringify({currentPath: window.location.pathname}),
-      headers: { 'Content-Type': 'application/json' },
-    });
-    const { url, redirect } = await res.json() as NextPath;
+    const { url, redirect } = await getNextPath();
     if (redirect) {
       document.location.href = url;
     } else {

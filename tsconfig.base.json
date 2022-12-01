@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@funnel/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@funnel/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@nx-poc/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
