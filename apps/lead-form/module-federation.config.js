@@ -1,6 +1,13 @@
-module.exports = {
+// @ts-check
+
+/**
+ * @type {import('@nrwl/react/module-federation').ModuleFederationConfig}
+ **/
+const moduleFederationConfig = {
   name: 'lead-form',
   exposes: {
-    './Module': 'apps/lead-form/src/app/remote-entry/entry.module.ts',
+    './Module': './src/remote-entry.ts',
   },
 };
+
+module.exports = moduleFederationConfig;

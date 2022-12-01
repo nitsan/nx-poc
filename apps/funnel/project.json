@@ -70,8 +70,8 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200",
+        "port": 4300,
+        "publicHost": "http://localhost:4300",
         "proxyConfig": "apps/funnel/proxy.conf.json"
       }
     },

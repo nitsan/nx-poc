@@ -1,95 +1,76 @@
 {
   "name": "lead-form",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
   "sourceRoot": "apps/lead-form/src",
-  "prefix": "nx-poc",
+  "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:webpack-browser",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
+        "compiler": "babel",
         "outputPath": "dist/apps/lead-form",
         "index": "apps/lead-form/src/index.html",
+        "baseHref": "/",
         "main": "apps/lead-form/src/main.ts",
         "polyfills": "apps/lead-form/src/polyfills.ts",
         "tsConfig": "apps/lead-form/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
         "assets": [
           "apps/lead-form/src/favicon.ico",
           "apps/lead-form/src/assets"
         ],
         "styles": ["apps/lead-form/src/styles.scss"],
         "scripts": [],
-        "customWebpackConfig": {
-          "path": "apps/lead-form/webpack.config.js"
-        }
+        "webpackConfig": "apps/lead-form/webpack.config.js"
       },
       "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
         "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
-            }
-          ],
           "fileReplacements": [
             {
               "replace": "apps/lead-form/src/environments/environment.ts",
               "with": "apps/lead-form/src/environments/environment.prod.ts"
             }
           ],
+          "optimization": true,
           "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/lead-form/webpack.prod.config.js"
-          }
-        },
-        "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/lead-form/webpack.config.prod.js"
         }
-      },
-      "defaultConfiguration": "production"
-    },
-    "serve": {
-      "executor": "@nrwl/angular:webpack-server",
-      "configurations": {
-        "production": {
-          "browserTarget": "lead-form:build:production"
-        },
-        "development": {
-          "browserTarget": "lead-form:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
       }
     },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+    "serve": {
+      "executor": "@nrwl/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
       "options": {
-        "browserTarget": "lead-form:build"
+        "buildTarget": "lead-form:build",
+        "hmr": true,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "lead-form:build:development"
+        },
+        "production": {
+          "buildTarget": "lead-form:build:production",
+          "hmr": false
+        }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/lead-form/**/*.ts",
-          "apps/lead-form/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/lead-form/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
@@ -101,7 +82,7 @@
       }
     },
     "serve-static": {
-      "executor": "@nrwl/angular:file-server",
+      "executor": "@nrwl/web:file-server",
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "lead-form:build",
