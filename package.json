@@ -6,7 +6,8 @@
     "start:angular": "nx serve funnel --devRemotes=questionnaire",
     "start:react": "nx serve shell --devRemotes=lead-form,hub,quote,ui-react",
     "start:server": "nx serve server",
-    "build": "nx build",
+    "start:server-prod": "nx serve server --prod",
+    "build": "nx affected --target=build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main"
   },

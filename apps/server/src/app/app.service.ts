@@ -1,24 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { NextPath } from '@funnel/api-interfaces';
 
+const isDev = process.env.NODE_ENV === 'development';
+console.log('NODE_ENV is:', process.env.NODE_ENV);
+
 @Injectable()
 export class AppService {
   getData(): { message: string } {
     return { message: 'Welcome to server!' };
   }
 
-  getNextPath(currentPath: string): NextPath {
-    const nextPath = { url: '', redirect: false};
-    switch (currentPath) {
+  getNextPath(currentPath: string, referer: string): NextPath {
+    const nextPath = { url: '', redirect: false}
+    const path = currentPath.replace(/\/+$/, '');
+    switch (path) {
       case '/lead-form':
         nextPath.url = '/hub';
         break;
       case '/hub':
-        nextPath.url = 'http://localhost:4300/questionnaire';
+        nextPath.url = `${isDev ? 'http://localhost:4300': referer}/questionnaire`;
         nextPath.redirect = true;
         break;
       case '/questionnaire':
-        nextPath.url = 'http://localhost:4200/quote';
+        nextPath.url = `${isDev ? 'http://localhost:4200': referer}/quote`;
         nextPath.redirect = true;
         break;
       default:

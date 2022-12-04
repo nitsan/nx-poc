@@ -14,6 +14,7 @@ export class AppController {
 
   @Post('next')
   getNextPath(@Body() body, @Req() req: Request): NextPath {
-    return this.appService.getNextPath(body.currentPath);
+    // @ts-ignore
+    return this.appService.getNextPath(body.currentPath, `${req.protocol}://${req.get('Host')}`);
   }
 }
