@@ -1,0 +1,27 @@
+{
+  "name": "ui-angular",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ui-angular/src",
+  "prefix": "nx-poc",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-angular"],
+      "options": {
+        "jestConfig": "libs/ui-angular/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui-angular/**/*.ts",
+          "libs/ui-angular/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

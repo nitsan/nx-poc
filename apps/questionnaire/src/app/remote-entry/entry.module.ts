@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { QuestionnaireComponent } from "../questionnaire/questionnaire.component";
 import { UtilsService } from "./utils.service";
 import { HttpClientModule } from "@angular/common/http";
+import { UiAngularModule } from "@nx-poc/ui-angular";
 
 @NgModule({
   declarations: [QuestionnaireComponent],
@@ -17,6 +18,7 @@ import { HttpClientModule } from "@angular/common/http";
         component: QuestionnaireComponent,
       },
     ]),
+    UiAngularModule,
   ],
   providers: [UtilsService],
 })

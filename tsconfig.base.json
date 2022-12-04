@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@funnel/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@nx-poc/ui-angular": ["libs/ui-angular/src/index.ts"],
       "@nx-poc/ui-react": ["libs/ui-react/src/index.ts"],
       "@nx-poc/utils": ["libs/utils/src/index.ts"]
     }
