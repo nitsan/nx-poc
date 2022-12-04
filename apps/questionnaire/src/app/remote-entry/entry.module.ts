@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { QuestionnaireComponent } from "../questionnaire/questionnaire.component";
+import { UtilsService } from "./utils.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [QuestionnaireComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',
@@ -15,6 +18,6 @@ import { QuestionnaireComponent } from "../questionnaire/questionnaire.component
       },
     ]),
   ],
-  providers: [],
+  providers: [UtilsService],
 })
 export class RemoteEntryModule {}
