@@ -4,8 +4,10 @@
  * @type {import('@nrwl/react/module-federation').ModuleFederationConfig}
  **/
 const moduleFederationConfig = {
-  name: 'shell',
-  remotes: ['lead-form', 'hub', 'quote'],
+  name: 'quote',
+  exposes: {
+    './Module': './src/remote-entry.ts',
+  },
 };
 
 module.exports = moduleFederationConfig;

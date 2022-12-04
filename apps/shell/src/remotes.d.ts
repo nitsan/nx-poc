@@ -3,4 +3,4 @@
 
 declare module 'lead-form/Module';
 declare module 'hub/Module';
-declare module 'payment/Module';
+declare module 'quote/Module';

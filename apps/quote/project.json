@@ -1,0 +1,99 @@
+{
+  "name": "quote",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/quote/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/quote",
+        "index": "apps/quote/src/index.html",
+        "baseHref": "/",
+        "main": "apps/quote/src/main.ts",
+        "polyfills": "apps/quote/src/polyfills.ts",
+        "tsConfig": "apps/quote/tsconfig.app.json",
+        "assets": ["apps/quote/src/favicon.ico", "apps/quote/src/assets"],
+        "styles": ["apps/quote/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/quote/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/quote/src/environments/environment.ts",
+              "with": "apps/quote/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/quote/webpack.config.prod.js"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "quote:build",
+        "hmr": true,
+        "port": 4302
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "quote:build:development"
+        },
+        "production": {
+          "buildTarget": "quote:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/quote/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/quote"],
+      "options": {
+        "jestConfig": "apps/quote/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "quote:build",
+        "port": 4302
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "quote:build:development"
+        },
+        "production": {
+          "buildTarget": "quote:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
