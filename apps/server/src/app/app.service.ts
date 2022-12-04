@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { NextPath } from '@funnel/api-interfaces';
 
-const isDev = process.env.NODE_ENV === 'development';
-console.log('NODE_ENV is:', process.env.NODE_ENV);
+const isDev = process.env['NODE' + '_ENV'] === 'development';
+console.log('NODE_ENV is:', process.env['NODE' + '_ENV']);
 
 @Injectable()
 export class AppService {

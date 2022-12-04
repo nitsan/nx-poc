@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "docker:build": "docker build . -t nx-poc",
+    "docker:run": "docker run --rm -e NODE_ENV=prod -p 3000:3000 --name nx-poc nx-poc",
     "start:angular": "nx serve funnel --devRemotes=questionnaire,ui-angular",
     "start:react": "nx serve shell --devRemotes=lead-form,hub,quote,ui-react",
     "start:server": "nx serve server",
-    "start:server-prod": "nx serve server --prod",
-    "build": "nx affected --target=build",
+    "start:prod": "node dist/apps/server/main.js",
+    "build": "nx run-many --target=build --all",
+    "build:affected": "nx affected --target=build --prod",
+    "nx:reset": "nx reset",
+    "nx:report": "nx report",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main"
   },
