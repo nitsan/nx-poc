@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { Header } from "@nx-poc/ui-react";
 
 const LeadForm = React.lazy(() => import('lead-form/Module'));
 const Hub = React.lazy(() => import('hub/Module'));
@@ -7,7 +8,8 @@ const Payment = React.lazy(() => import('payment/Module'));
 
 export function App() {
   return (
-    <React.Suspense fallback={null}>
+    <><Header></Header>
+      <React.Suspense fallback={null}>
       <ul>
         <li>
           <Link to="/lead-form">Lead form</Link>
@@ -20,12 +22,12 @@ export function App() {
         </li>
       </ul>
       <Routes>
-        <Route path="/" element={ <Navigate to="/lead-form" /> }/>
-        <Route path="/lead-form" element={<LeadForm />} />
-        <Route path="/hub" element={<Hub />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/" element={<Navigate to="/lead-form"/>}/>
+        <Route path="/lead-form" element={<LeadForm/>}/>
+        <Route path="/hub" element={<Hub/>}/>
+        <Route path="/payment" element={<Payment/>}/>
       </Routes>
-    </React.Suspense>
+    </React.Suspense></>
   );
 }
 

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start:angular": "nx serve funnel --devRemotes=questionnaire",
-    "start:react": "nx serve shell --devRemotes=lead-form,hub,payment",
+    "start:react": "nx serve shell --devRemotes=lead-form,hub,payment,ui-react",
     "start:server": "nx serve server",
     "build": "nx build",
     "test": "nx test",

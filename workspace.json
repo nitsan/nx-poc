@@ -15,6 +15,7 @@
     "server": "apps/server",
     "shell": "apps/shell",
     "shell-e2e": "apps/shell-e2e",
+    "ui-react": "libs/ui-react",
     "utils": "libs/utils"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
