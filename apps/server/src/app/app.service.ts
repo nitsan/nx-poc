@@ -18,7 +18,7 @@ export class AppService {
         nextPath.redirect = true;
         break;
       case '/questionnaire':
-        nextPath.url = 'http://localhost:4200/payment';
+        nextPath.url = 'http://localhost:4200/quote';
         nextPath.redirect = true;
         break;
       default:
