@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "nx-poc",
+            "prefix": "ni",
             "style": "kebab-case"
           }
         ]

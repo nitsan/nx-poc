@@ -13,6 +13,7 @@
     "build:affected": "nx affected --target=build --prod",
     "nx:reset": "nx reset",
     "nx:report": "nx report",
+    "lint": "nx run-many --target=lint",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main"
   },

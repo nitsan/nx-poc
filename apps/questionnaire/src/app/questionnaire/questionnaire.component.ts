@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UtilsService } from "../remote-entry/utils.service";
 
 @Component({
@@ -6,10 +6,8 @@ import { UtilsService } from "../remote-entry/utils.service";
   templateUrl: './questionnaire.component.html',
   styleUrls: ['./questionnaire.component.scss'],
 })
-export class QuestionnaireComponent implements OnInit {
+export class QuestionnaireComponent {
   constructor(private utilsService: UtilsService) {}
-
-  ngOnInit(): void {}
 
   next() {
     this.utilsService.getNextPath();
