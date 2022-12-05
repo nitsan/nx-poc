@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { NextPath } from '@funnel/api-interfaces';
 
 @Controller('api')
-export class AppController {
+export class ApiController {
   constructor(private readonly appService: AppService) {}
 
   @Get()

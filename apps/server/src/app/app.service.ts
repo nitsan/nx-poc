@@ -3,6 +3,7 @@ import { NextPath } from '@funnel/api-interfaces';
 
 const isDev = process.env['NODE' + '_ENV'] === 'development';
 console.log('NODE_ENV is:', process.env['NODE' + '_ENV']);
+console.log('isDev', isDev);
 
 @Injectable()
 export class AppService {
